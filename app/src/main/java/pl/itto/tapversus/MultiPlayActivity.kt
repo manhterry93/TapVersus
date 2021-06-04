@@ -8,6 +8,11 @@ import kotlinx.android.synthetic.main.activity_multi_play.*
 class MultiPlayActivity : AppCompatActivity() {
     var player1Point = 0
     var player2Point = 0
+
+    companion object {
+        const val WIN_POINT = 25
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_multi_play)
@@ -24,7 +29,7 @@ class MultiPlayActivity : AppCompatActivity() {
     private fun checkResult() {
         tv_player1_point.text = player1Point.toString()
         tv_player2_point.text = player2Point.toString()
-        if (player1Point != player2Point && (player1Point > 50 || player2Point > 50)) {
+        if (player1Point != player2Point && (player1Point > WIN_POINT || player2Point > WIN_POINT)) {
             btn_play1.callBack = null
             btn_play2.callBack = null
             if (player1Point > player2Point) {
